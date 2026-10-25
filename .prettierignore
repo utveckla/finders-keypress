@@ -1,0 +1,9 @@
+# Dependencies and generated files
+node_modules/
+package-lock.json
+
+# Vendored third-party code (keep upstream formatting)
+vendor/
+
+# Binary assets
+assets/

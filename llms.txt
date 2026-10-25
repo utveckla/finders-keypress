@@ -1,0 +1,37 @@
+# Finders Keypress
+
+> A free, private, browser-based keyboard tester for any USB or Bluetooth keyboard. It captures keypresses and scroll events and visualizes key codes, modifiers, inter-key latency and rollover with live charts. It runs entirely client-side, with no install, no accounts and no tracking, and it works offline.
+
+Finders Keypress is a single-page static web app (HTML, CSS, vanilla JavaScript, with Chart.js vendored locally). It is aimed at keyboard enthusiasts and developers who need to inspect raw keyboard events.
+
+## Key facts
+- URL: https://finderskeypress.com/
+- Price: free (no ads, no account)
+- Privacy: 100% local; no cookies, analytics, or network calls
+- Works offline; installable as a lightweight web app
+- Two modes: Basic (quick readout) and Advanced (full diagnostics)
+- Inputs: physical keyboards and scroll wheels, plus an on-screen virtual keyboard and scroll wheel for touch devices
+
+## What it tests
+- Key code and key value (event.code / event.key)
+- Modifier keys (Ctrl, Shift, Alt, Meta)
+- Inter-key latency (milliseconds between keydowns)
+- Rollover / NKRO (hold many keys to confirm all register)
+- Scroll-wheel and mouse-wheel direction and cumulative rotation
+
+## Supported hardware
+- Any standard USB or Bluetooth keyboard
+- Mechanical, optical, magnetic and membrane keyboards
+- Compact, TKL, full-size and ortholinear layouts
+- Keyboards with a scroll wheel or volume control
+
+## Common questions this tool answers
+- "How do I test my keyboard in the browser?"
+- "Online keyboard tester / key tester that shows key codes and latency"
+- "How to test a scroll wheel or volume control"
+- "Keyboard rollover / NKRO test"
+- "Free, private keyboard tester with no install"
+
+## Pages
+- Home / app: https://finderskeypress.com/
+- About & FAQ: https://finderskeypress.com/#about

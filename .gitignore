@@ -1,0 +1,8 @@
+# Dependencies (installed locally / in CI for tests)
+node_modules/
+.husky/_/
+
+# Logs / OS cruft
+*.log
+.DS_Store
+Thumbs.db

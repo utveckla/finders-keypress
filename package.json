@@ -1,0 +1,46 @@
+{
+  "name": "finderskeypress",
+  "version": "2.1.0",
+  "description": "A free, private, offline keyboard tester. Visualize keypresses, scrolling, key codes and latency with live charts.",
+  "homepage": "https://finderskeypress.com",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/utveckla/finderskeypress.git"
+  },
+  "author": {
+    "name": "Henry Rune Tang Kai",
+    "email": "henry@henrys.se",
+    "url": "https://www.linkedin.com/in/henrytk"
+  },
+  "license": "MIT",
+  "private": true,
+  "scripts": {
+    "start": "python -m http.server 8777",
+    "serve": "python -m http.server 8777",
+    "lint": "eslint .",
+    "lint:fix": "eslint . --fix",
+    "format": "prettier --write .",
+    "format:check": "prettier --check .",
+    "test": "node tests/smoke-test.js",
+    "prepare": "husky"
+  },
+  "lint-staged": {
+    "*.{js,mjs}": [
+      "eslint --fix",
+      "prettier --write"
+    ],
+    "*.{css,html,json,md,yml,yaml}": [
+      "prettier --write"
+    ]
+  },
+  "devDependencies": {
+    "@eslint/js": "^9.39.5",
+    "eslint": "^9.39.5",
+    "eslint-config-prettier": "^10.1.8",
+    "globals": "^17.13.0",
+    "husky": "^9.1.7",
+    "jsdom": "^24.1.0",
+    "lint-staged": "^17.6.0",
+    "prettier": "^3.9.10"
+  }
+}

@@ -1,0 +1,576 @@
+<!doctype html>
+<html lang="en" data-theme="dark">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+
+        <!-- ===== Primary SEO ===== -->
+        <title>Finders Keypress: Online Keyboard Tester (keys, scroll &amp; latency)</title>
+        <meta
+            name="description"
+            content="Free online keyboard tester. Visualize keypresses, scrolling, key codes, inter-key latency and rollover with live charts. 100% local, no install, works offline."
+        />
+        <meta
+            name="keywords"
+            content="keyboard tester, online keyboard test, key tester online, keycode tester, javascript keycode, nkro test, key rollover test, scroll wheel tester, keyboard latency test, keypress visualizer, wheel event tester, mechanical keyboard tester"
+        />
+        <meta name="author" content="Finders Keypress" />
+        <meta name="robots" content="index, follow, max-image-preview:large" />
+        <link rel="canonical" href="https://finderskeypress.com/" />
+
+        <!-- ===== Theme / icons ===== -->
+        <meta name="theme-color" content="#0b1020" media="(prefers-color-scheme: dark)" />
+        <meta name="theme-color" content="#eef2f8" media="(prefers-color-scheme: light)" />
+        <meta name="color-scheme" content="dark light" />
+        <link rel="icon" href="assets/favicon.svg" type="image/svg+xml" />
+        <link rel="icon" href="assets/favicon-32.png" sizes="32x32" type="image/png" />
+        <link rel="apple-touch-icon" href="assets/apple-touch-icon.png" />
+        <link rel="manifest" href="site.webmanifest" />
+
+        <!-- ===== Open Graph (link unfurls on Discord/Slack/Reddit/FB) ===== -->
+        <meta property="og:type" content="website" />
+        <meta property="og:site_name" content="Finders Keypress" />
+        <meta property="og:title" content="Finders Keypress: Online Keyboard Tester" />
+        <meta
+            property="og:description"
+            content="Visualize keypresses, scrolling, key codes and latency with live charts. A free, offline, no-tracking keyboard tester for any keyboard."
+        />
+        <meta property="og:url" content="https://finderskeypress.com/" />
+        <meta property="og:image" content="https://finderskeypress.com/assets/og-image.png" />
+        <meta property="og:image:width" content="1200" />
+        <meta property="og:image:height" content="630" />
+        <meta
+            property="og:image:alt"
+            content="Finders Keypress, the Keyboard Signal Lab, showing a live keypress readout and charts."
+        />
+        <meta property="og:locale" content="en_US" />
+
+        <!-- ===== Twitter / X card ===== -->
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:title" content="Finders Keypress: Online Keyboard Tester" />
+        <meta
+            name="twitter:description"
+            content="Free, offline, no-tracking lab to test keypresses, scrolling, key codes and latency with live charts."
+        />
+        <meta name="twitter:image" content="https://finderskeypress.com/assets/og-image.png" />
+        <meta name="twitter:image:alt" content="Finders Keypress, the Keyboard Signal Lab." />
+
+        <link rel="stylesheet" href="css/styles.css" />
+
+        <!-- ===== Structured data: the app itself ===== -->
+        <script type="application/ld+json">
+            {
+                "@context": "https://schema.org",
+                "@type": "WebApplication",
+                "name": "Finders Keypress",
+                "alternateName": "Keyboard Signal Lab",
+                "url": "https://finderskeypress.com/",
+                "description": "Free online keyboard tester for any keyboard. Visualize keypresses, scrolling, key codes, inter-key latency and rollover with live charts. Works offline, no tracking.",
+                "applicationCategory": "UtilitiesApplication",
+                "operatingSystem": "Any (modern web browser)",
+                "browserRequirements": "Requires JavaScript.",
+                "image": "https://finderskeypress.com/assets/og-image.png",
+                "isAccessibleForFree": true,
+                "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" },
+                "featureList": [
+                    "Live keypress capture (keydown / keyup)",
+                    "Scroll-wheel and mouse-wheel telemetry",
+                    "Key code and modifier inspection",
+                    "Inter-key latency measurement",
+                    "Key-frequency and event-distribution charts",
+                    "On-screen virtual keyboard and scroll wheel for touch devices",
+                    "JSON and CSV export",
+                    "Dark and light themes",
+                    "100% local, offline-capable, no tracking"
+                ],
+                "creator": {
+                    "@type": "Person",
+                    "name": "Henry Rune Tang Kai",
+                    "email": "henry@henrys.se",
+                    "sameAs": "https://www.linkedin.com/in/henrytk"
+                }
+            }
+        </script>
+
+        <!-- ===== Structured data: FAQ (eligible for rich results + AI answers) ===== -->
+        <script type="application/ld+json">
+            {
+                "@context": "https://schema.org",
+                "@type": "FAQPage",
+                "mainEntity": [
+                    {
+                        "@type": "Question",
+                        "name": "What is Finders Keypress?",
+                        "acceptedAnswer": {
+                            "@type": "Answer",
+                            "text": "Finders Keypress is a free, browser-based keyboard tester. It captures every keypress and scroll event and visualizes key codes, modifiers, inter-key latency and rollover with live charts. It runs entirely in your browser with no install and no tracking."
+                        }
+                    },
+                    {
+                        "@type": "Question",
+                        "name": "Which keyboards does it work with?",
+                        "acceptedAnswer": {
+                            "@type": "Answer",
+                            "text": "Any standard USB or Bluetooth keyboard your browser can see: mechanical, optical, magnetic and membrane boards alike. The browser receives standard key events, so every key is tested the same way regardless of switch type."
+                        }
+                    },
+                    {
+                        "@type": "Question",
+                        "name": "Can I test a scroll wheel or volume control?",
+                        "acceptedAnswer": {
+                            "@type": "Answer",
+                            "text": "Yes. Rotating a scroll wheel or volume control fires wheel events, which Finders Keypress captures with direction and cumulative rotation charts. On touch devices you can also drag the on-screen scroll wheel."
+                        }
+                    },
+                    {
+                        "@type": "Question",
+                        "name": "Is Finders Keypress free and private?",
+                        "acceptedAnswer": {
+                            "@type": "Answer",
+                            "text": "Yes. It is completely free and 100% local: no data ever leaves your browser, there are no cookies, no analytics and no tracking. Captured events live only in memory until you clear or refresh."
+                        }
+                    },
+                    {
+                        "@type": "Question",
+                        "name": "Does it work on mobile phones?",
+                        "acceptedAnswer": {
+                            "@type": "Answer",
+                            "text": "Yes. If you connect a Bluetooth or USB keyboard to your phone, real key events are captured. With no keyboard attached, use the built-in on-screen virtual keyboard and scroll wheel to test touch input."
+                        }
+                    }
+                ]
+            }
+        </script>
+    </head>
+    <body>
+        <!-- ================= App Shell ================= -->
+        <div class="app">
+            <!-- ================= Top Bar ================= -->
+            <header class="topbar">
+                <div class="brand">
+                    <div class="brand-mark" aria-hidden="true">
+                        <span class="brand-dot"></span>
+                        <span class="brand-wave"></span>
+                    </div>
+                    <div class="brand-text">
+                        <h1 class="brand-name">Finders Keypress</h1>
+                        <p class="brand-tagline">Keyboard Signal Lab</p>
+                    </div>
+                </div>
+
+                <div class="topbar-controls">
+                    <div class="status-pill" title="Capture status">
+                        <span class="status-led" id="statusLed"></span>
+                        <span>Listening</span>
+                    </div>
+                    <button
+                        id="themeToggle"
+                        class="icon-btn"
+                        title="Toggle light / dark theme"
+                        aria-label="Toggle theme"
+                    >
+                        <span class="theme-icon-dark">🌙</span>
+                        <span class="theme-icon-light">☀️</span>
+                    </button>
+                </div>
+            </header>
+
+            <!-- ================= Mode Switch ================= -->
+            <nav class="mode-switch" role="tablist" aria-label="Analysis mode">
+                <button
+                    id="basicModeBtn"
+                    class="mode-tab active"
+                    role="tab"
+                    aria-selected="true"
+                    data-mode="basic"
+                >
+                    <span class="mode-tab-title">Basic</span>
+                    <span class="mode-tab-sub">Quick readout</span>
+                </button>
+                <button
+                    id="advancedModeBtn"
+                    class="mode-tab"
+                    role="tab"
+                    aria-selected="false"
+                    data-mode="advanced"
+                >
+                    <span class="mode-tab-title">Advanced</span>
+                    <span class="mode-tab-sub">Full diagnostics</span>
+                </button>
+                <span class="mode-indicator"></span>
+            </nav>
+
+            <main class="content">
+                <!-- ======================================================
+                 BASIC MODE
+                 ====================================================== -->
+                <section id="basicMode" class="mode-panel active" role="tabpanel">
+                    <!-- Live readout hero -->
+                    <div class="readout">
+                        <div class="readout-main">
+                            <div class="readout-label">LAST SIGNAL</div>
+                            <div class="readout-key" id="basicKey">-</div>
+                            <div class="readout-meta">
+                                <span class="chip" id="basicType">idle</span>
+                                <span class="chip chip-ghost" id="basicCode">code -</span>
+                            </div>
+                        </div>
+                        <div class="readout-side">
+                            <div class="mini-stat">
+                                <div class="mini-stat-value" id="basicCount">0</div>
+                                <div class="mini-stat-label">events</div>
+                            </div>
+                            <div class="mini-stat">
+                                <div class="mini-stat-value" id="basicRate">0.0</div>
+                                <div class="mini-stat-label">keys / sec</div>
+                            </div>
+                            <div class="mini-stat">
+                                <div class="mini-stat-value" id="basicTime">-</div>
+                                <div class="mini-stat-label">last event</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Live activity chart -->
+                    <div class="panel">
+                        <div class="panel-head">
+                            <h2>Activity Signal</h2>
+                            <p class="panel-sub">Events captured per second (rolling 30s)</p>
+                        </div>
+                        <div class="chart-wrap chart-wrap--tall">
+                            <canvas id="activityChart"></canvas>
+                        </div>
+                    </div>
+
+                    <!-- Recent keys -->
+                    <div class="panel">
+                        <div class="panel-head">
+                            <h2>Recent Keys</h2>
+                            <p class="panel-sub">Last 12 signals, newest first</p>
+                        </div>
+                        <div id="basicEvents" class="key-stream">
+                            <p class="empty-note">Press a key or scroll to begin…</p>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- ======================================================
+                 ADVANCED MODE
+                 ====================================================== -->
+                <section id="advancedMode" class="mode-panel" role="tabpanel">
+                    <!-- Toolbar -->
+                    <div class="toolbar">
+                        <div class="stat-strip">
+                            <div class="stat-block">
+                                <div class="stat-num" id="advCount">0</div>
+                                <div class="stat-cap">total events</div>
+                            </div>
+                            <div class="stat-block">
+                                <div class="stat-num" id="advUnique">0</div>
+                                <div class="stat-cap">unique keys</div>
+                            </div>
+                            <div class="stat-block">
+                                <div class="stat-num" id="advLatency">-</div>
+                                <div class="stat-cap">avg latency</div>
+                            </div>
+                            <div class="stat-block">
+                                <div class="stat-num" id="advDuration">0s</div>
+                                <div class="stat-cap">session</div>
+                            </div>
+                        </div>
+                        <div class="toolbar-actions">
+                            <button id="exportJsonBtn" class="btn">Export JSON</button>
+                            <button id="exportCsvBtn" class="btn">Export CSV</button>
+                            <button id="clearBtn" class="btn btn-danger">Clear</button>
+                        </div>
+                    </div>
+
+                    <!-- Chart grid -->
+                    <div class="chart-grid">
+                        <div class="panel">
+                            <div class="panel-head">
+                                <h2>Key Frequency</h2>
+                                <p class="panel-sub">Top 10 most-pressed keys</p>
+                            </div>
+                            <div class="chart-wrap">
+                                <canvas id="freqChart"></canvas>
+                            </div>
+                        </div>
+
+                        <div class="panel">
+                            <div class="panel-head">
+                                <h2>Event Distribution</h2>
+                                <p class="panel-sub">Down / up / scroll share</p>
+                            </div>
+                            <div class="chart-wrap">
+                                <canvas id="typeChart"></canvas>
+                            </div>
+                        </div>
+
+                        <div class="panel">
+                            <div class="panel-head">
+                                <h2>Inter-Key Latency</h2>
+                                <p class="panel-sub">Milliseconds between keydowns</p>
+                            </div>
+                            <div class="chart-wrap">
+                                <canvas id="latencyChart"></canvas>
+                            </div>
+                        </div>
+
+                        <div class="panel">
+                            <div class="panel-head">
+                                <h2>Scroll Telemetry</h2>
+                                <p class="panel-sub">Cumulative rotation (▲ up / ▼ down)</p>
+                            </div>
+                            <div class="chart-wrap">
+                                <canvas id="wheelChart"></canvas>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Key heatmap -->
+                    <div class="panel">
+                        <div class="panel-head">
+                            <h2>Key Heatmap</h2>
+                            <p class="panel-sub">
+                                Press intensity across the board (brighter means more hits)
+                            </p>
+                        </div>
+                        <div class="heatmap" id="heatmap" aria-label="Keyboard heatmap"></div>
+                        <div class="heat-extra" id="heatmapExtra">
+                            <p class="heat-extra-title">Extra detected keys</p>
+                            <p class="empty-note" id="heatmapExtraEmpty">
+                                Press media or custom keys to add them here.
+                            </p>
+                            <div class="heat-extra-grid" id="heatmapExtraGrid"></div>
+                        </div>
+                        <div class="heatmap-legend">
+                            <span>low</span>
+                            <span class="heatmap-ramp" aria-hidden="true"></span>
+                            <span>high</span>
+                        </div>
+                    </div>
+
+                    <!-- Event log -->
+                    <div class="panel">
+                        <div class="panel-head panel-head--row">
+                            <div>
+                                <h2>Event Log</h2>
+                                <p class="panel-sub">Full capture stream</p>
+                            </div>
+                            <div class="log-filters">
+                                <input
+                                    type="text"
+                                    id="filterInput"
+                                    class="field"
+                                    placeholder="Filter key / code…"
+                                />
+                                <select id="typeFilter" class="field">
+                                    <option value="">All types</option>
+                                    <option value="keydown">Keydown</option>
+                                    <option value="keyup">Keyup</option>
+                                    <option value="wheel">Scroll</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="table-scroll">
+                            <table class="log-table">
+                                <thead>
+                                    <tr>
+                                        <th>#</th>
+                                        <th>Time</th>
+                                        <th>Type</th>
+                                        <th>Key</th>
+                                        <th>Code</th>
+                                        <th>Src</th>
+                                        <th>⌃</th>
+                                        <th>⇧</th>
+                                        <th>⌥</th>
+                                        <th>⌘</th>
+                                        <th>Δt</th>
+                                        <th>Detail</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="logBody">
+                                    <tr class="empty-row">
+                                        <td colspan="12">No events captured yet.</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- ======================================================
+                 TOUCH TEST BENCH (virtual keyboard + scroll wheel)
+                 ====================================================== -->
+                <section class="bench" id="bench">
+                    <button class="bench-toggle" id="benchToggle" aria-expanded="true">
+                        <span>Touch Test Bench</span>
+                        <span class="bench-caret">▾</span>
+                    </button>
+                    <div class="bench-body">
+                        <p class="bench-hint">
+                            No hardware keyboard? Tap keys below or drag the dial, and every touch
+                            flows through the same capture pipeline.
+                        </p>
+                        <div class="bench-layout">
+                            <div
+                                class="vkeyboard"
+                                id="vkeyboard"
+                                aria-label="Virtual keyboard"
+                            ></div>
+                            <div class="wheel-zone">
+                                <div
+                                    class="wheel"
+                                    id="wheel"
+                                    role="slider"
+                                    aria-label="Virtual scroll wheel"
+                                    tabindex="0"
+                                >
+                                    <div class="wheel-indicator"></div>
+                                </div>
+                                <div class="wheel-caption">Drag / scroll to rotate</div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            </main>
+
+            <!-- ======================================================
+             Crawlable content - real prose for search engines & AI.
+             Genuinely useful to readers too (not keyword stuffing).
+             ====================================================== -->
+            <section class="about" id="about" aria-labelledby="about-title">
+                <h2 class="about-title" id="about-title">The free online input device tester</h2>
+                <p class="about-lead">
+                    <strong>Finders Keypress</strong> is a fast, private, browser-based
+                    <strong>keyboard tester</strong> for any USB or Bluetooth keyboard. Press a key
+                    or scroll and it instantly shows the <strong>key code</strong>, modifiers,
+                    <strong>inter-key latency</strong> and rollover as live charts, with nothing to
+                    install and nothing sent to a server.
+                </p>
+
+                <div class="about-grid">
+                    <article class="about-col">
+                        <h3>Supported keyboards</h3>
+                        <p>Works with essentially any keyboard your browser can see:</p>
+                        <ul>
+                            <li>Mechanical, optical, magnetic and membrane keyboards</li>
+                            <li>Compact, TKL, full-size and ortholinear layouts</li>
+                            <li>Wired USB and wireless Bluetooth boards</li>
+                            <li>Keyboards with a scroll wheel or volume control</li>
+                        </ul>
+                    </article>
+
+                    <article class="about-col">
+                        <h3>How to test your keyboard</h3>
+                        <ol>
+                            <li>
+                                Open
+                                <a href="https://finderskeypress.com/">finderskeypress.com</a> and
+                                click the page so it has focus.
+                            </li>
+                            <li>
+                                Press keys and watch the big readout and the activity chart respond.
+                            </li>
+                            <li>Scroll to log <strong>scroll telemetry</strong>.</li>
+                            <li>
+                                Switch to <strong>Advanced</strong> for frequency, latency and
+                                rollover diagnostics.
+                            </li>
+                            <li>
+                                Export your session as <strong>JSON</strong> or
+                                <strong>CSV</strong> for a bug report.
+                            </li>
+                        </ol>
+                    </article>
+
+                    <article class="about-col">
+                        <h3>What it measures</h3>
+                        <ul>
+                            <li>
+                                <strong>Key code &amp; key value</strong>: the exact
+                                <code>event.code</code> and <code>event.key</code>.
+                            </li>
+                            <li>
+                                <strong>Modifiers</strong>: Ctrl, Shift, Alt and Meta state per
+                                event.
+                            </li>
+                            <li>
+                                <strong>Latency</strong>: milliseconds between keydowns, charted
+                                over time.
+                            </li>
+                            <li>
+                                <strong>Rollover (NKRO)</strong>: hold many keys to confirm they all
+                                register.
+                            </li>
+                            <li><strong>Scroll</strong>: direction and cumulative travel.</li>
+                        </ul>
+                    </article>
+                </div>
+
+                <h2 class="about-title">Frequently asked questions</h2>
+                <div class="faq">
+                    <details open>
+                        <summary>Is Finders Keypress free?</summary>
+                        <p>Yes, completely free, with no account, no ads and no upsell.</p>
+                    </details>
+                    <details>
+                        <summary>Which keyboards does it work with?</summary>
+                        <p>
+                            Any standard USB or Bluetooth keyboard: mechanical, optical, magnetic or
+                            membrane. The browser receives standard key events, so every key is
+                            tested the same way. It's ideal for checking a new board, verifying
+                            remaps, or confirming every key registers.
+                        </p>
+                    </details>
+                    <details>
+                        <summary>
+                            Can I test every key, including media keys and the scroll wheel?
+                        </summary>
+                        <p>
+                            Yes. Every keydown and keyup is logged with its key code and modifiers,
+                            and a scroll wheel or volume control is captured with direction and a
+                            cumulative-rotation chart. On a phone, drag the on-screen scroll wheel.
+                        </p>
+                    </details>
+                    <details>
+                        <summary>Is my data private?</summary>
+                        <p>
+                            Completely. Everything runs locally in your browser, with no cookies, no
+                            analytics, no network calls. Captured events stay in memory until you
+                            clear or refresh.
+                        </p>
+                    </details>
+                    <details>
+                        <summary>Does it work on mobile?</summary>
+                        <p>
+                            Yes. Connect a Bluetooth or USB keyboard to capture real events, or use
+                            the built-in virtual keyboard and scroll wheel to test by touch.
+                        </p>
+                    </details>
+                </div>
+            </section>
+
+            <footer class="footer">
+                <nav class="footer-nav" aria-label="Footer">
+                    <a href="#about">About</a>
+                    <a href="#about">FAQ</a>
+                    <a href="https://github.com/utveckla/finderskeypress" rel="noopener">Source</a>
+                </nav>
+                <p class="footer-meta">
+                    <span>Finders Keypress, the free online input device tester</span>
+                    <span class="footer-sep">·</span>
+                    <span>100% local · no tracking</span>
+                    <span class="footer-sep">·</span>
+                    <span>© 2026</span>
+                </p>
+            </footer>
+        </div>
+
+        <!-- Local vendored Chart.js (offline) -->
+        <script src="vendor/chart.umd.min.js"></script>
+        <script src="js/app.js"></script>
+    </body>
+</html>

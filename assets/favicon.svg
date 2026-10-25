@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="64" height="64" viewBox="0 0 64 64" role="img" aria-label="Finders Keypress">
+  <rect width="64" height="64" rx="14" fill="#0b1020"/>
+  <g stroke="#37f0b0" stroke-width="2" stroke-linecap="round" opacity="0.55">
+    <path d="M8 40 h6 l3 -10 4 20 4 -26 4 32 4 -22 3 6 h11" fill="none"/>
+  </g>
+  <circle cx="32" cy="30" r="6" fill="#37f0b0"/>
+  <circle cx="32" cy="30" r="11" fill="none" stroke="#37f0b0" stroke-width="2" opacity="0.4"/>
+</svg>

@@ -1,0 +1,35 @@
+# Finders Keypress - https://finderskeypress.com
+# Everything here is public and crawl-friendly. AI assistants welcome.
+
+User-agent: *
+Allow: /
+
+# Explicitly welcome major AI crawlers (discoverability is a goal here).
+User-agent: GPTBot
+Allow: /
+
+User-agent: OAI-SearchBot
+Allow: /
+
+User-agent: ChatGPT-User
+Allow: /
+
+User-agent: PerplexityBot
+Allow: /
+
+User-agent: ClaudeBot
+Allow: /
+
+User-agent: Claude-Web
+Allow: /
+
+User-agent: Google-Extended
+Allow: /
+
+User-agent: Applebot
+Allow: /
+
+User-agent: Applebot-Extended
+Allow: /
+
+Sitemap: https://finderskeypress.com/sitemap.xml
